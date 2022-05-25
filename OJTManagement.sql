@@ -81,6 +81,8 @@ ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
 GO
 ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
+ALTER DATABASE SCOPED CONFIGURATION SET IDENTITY_CACHE=OFF ;
+go
 USE [OJTManagement]
 GO
 /****** Object:  Table [dbo].[Account]    Script Date: 5/23/2022 7:56:55 PM ******/
@@ -89,8 +91,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Account](
-	[accountID] [varchar](10) NOT NULL,
-	[email] [varchar](50) NOT NULL,
+	[accountID] int IDENTITY(1,1)  ,
+	[email] [varchar](50) NOT NULL Unique,
 	[password] [varchar](15) NOT NULL,
 	[roleID] [varchar](10) NOT NULL,
  CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
@@ -108,11 +110,11 @@ CREATE TABLE [dbo].[Company](
 	[companyID] [varchar](10) NOT NULL,
 	[companyName] [nvarchar](200) NULL,
 	[phoneNumber] [varchar](10) not NULL,
-	[companyEmail] [varchar](100) not NULL,
+	[companyEmail] [varchar](100) not NULL unique,
 
 	[description] [nvarchar](300) not NULL,
 	[studentQuantity] [int] not NULL,
-	[accountID] [varchar](10) NOT NULL,
+	[accountID] int NOT NULL,
  CONSTRAINT [PK_Company] PRIMARY KEY CLUSTERED 
 (
 	[companyID] ASC
@@ -144,7 +146,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Major](
-	[majorID] [varchar](10) NOT NULL,
+	[majorID] [varchar] (10) NOT NULL,
 	[majorName] [nvarchar](100) NULL,
  CONSTRAINT [PK_Major] PRIMARY KEY CLUSTERED 
 (
@@ -158,11 +160,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Registration](
-	[registrationID] [varchar](10) NOT NULL,
+	[registrationID]  int IDENTITY(1,1) NOT NULL,
 	[studentID] [varchar](15) NOT NULL,
-	[studentName] [nvarchar](50) NULL,
 	[CV] [nvarchar](250) NULL,
-	[companyID] [varchar](10) NOT NULL,
+	[companyID] NOT NULL,
 	[mark] [float] NULL,
 	[description] [nvarchar](300) NULL,
  CONSTRAINT [PK_Registration] PRIMARY KEY CLUSTERED 
@@ -184,7 +185,7 @@ CREATE TABLE [dbo].[Student](
 	[phoneNumber] [varchar](10) NULL,
 	[major] [varchar](50) NULL,
 	[studentMail] [varchar](100) NULL,
-	[accountID] [varchar](10) NULL,
+	[accountID] int NULL,
 	[status] [bit] NULL,
 	[CV] [nvarchar](100) NULL,
 	[termID] [varchar](10) NULL,
