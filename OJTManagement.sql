@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[Account](
 	[accountID] int IDENTITY(1,1)  ,
 	[email] [varchar](50) NOT NULL Unique,
 	[password] [varchar](15) NOT NULL,
-	[roleID] [varchar](10) NOT NULL,
+	[roleID] int NOT NULL,
  CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
 (
 	[accountID] ASC
@@ -163,7 +163,7 @@ CREATE TABLE [dbo].[Registration](
 	[registrationID]  int IDENTITY(1,1) NOT NULL,
 	[studentID] [varchar](15) NOT NULL,
 	[CV] [nvarchar](250) NULL,
-	[companyID] NOT NULL,
+	[companyID]  [varchar](10)  NOT NULL,
 	[mark] [float] NULL,
 	[description] [nvarchar](300) NULL,
  CONSTRAINT [PK_Registration] PRIMARY KEY CLUSTERED 
