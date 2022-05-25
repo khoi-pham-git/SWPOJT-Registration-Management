@@ -94,6 +94,7 @@ CREATE TABLE [dbo].[Account](
 	[accountID] int IDENTITY(1,1)  ,
 	[email] [varchar](50) NOT NULL Unique,
 	[password] [varchar](15) NOT NULL,
+	[status] int not null,
 	[roleID] int NOT NULL,
  CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
 (
@@ -108,7 +109,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Company](
 	[companyID] [varchar](10) NOT NULL,
-	[companyName] [nvarchar](200) NULL,
+	[companyName] [nvarchar](200) not NULL,
 	[phoneNumber] [varchar](10) not NULL,
 	[companyEmail] [varchar](100) not NULL unique,
 
@@ -147,7 +148,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Major](
 	[majorID] [varchar] (10) NOT NULL,
-	[majorName] [nvarchar](100) NULL,
+	[majorName] [nvarchar](100) not NULL,
  CONSTRAINT [PK_Major] PRIMARY KEY CLUSTERED 
 (
 	[majorID] ASC
@@ -179,14 +180,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Student](
 	[studentID] [varchar](15) NOT NULL,
-	[fullName] [nvarchar](50) NULL,
-	[gender] [varchar](10) NULL,
-	[address] [nvarchar](200) NULL,
-	[phoneNumber] [varchar](10) NULL,
-	[major] [varchar](50) NULL,
-	[studentMail] [varchar](100) NULL,
-	[accountID] int NULL,
-	[status] [bit] NULL,
+	[fullName] [nvarchar](50) not NULL,
+	[gender] [varchar](10) not NULL,
+	[address] [nvarchar](200) not NULL,
+	[phoneNumber] [varchar](10) not NULL,
+	[major] [varchar](50) not NULL,
+	[studentMail] [varchar](100) not NULL,
+	[accountID] int not NULL,
+
 	[CV] [nvarchar](100) NULL,
 	[termID] [varchar](10) NULL,
  CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
@@ -202,8 +203,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Term](
 	[termID] [varchar](10) NOT NULL,
-	[termName] [nvarchar](50) NULL,
-	[year] [nvarchar](4) NULL,
+	[termName] [nvarchar](50) not NULL,
+	[year] [nvarchar](4) not NULL,
  CONSTRAINT [PK_Term] PRIMARY KEY CLUSTERED 
 (
 	[termID] ASC
