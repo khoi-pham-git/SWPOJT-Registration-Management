@@ -168,6 +168,7 @@ CREATE TABLE [dbo].[Registration](
 	[companyID]  [varchar](10)  NOT NULL,
 	[mark] [float] NULL,
 	[description] [nvarchar](300) NULL,
+	[processNote] [nvarchar](300) NULL,
  CONSTRAINT [PK_Registration] PRIMARY KEY CLUSTERED 
 (
 	[registrationID] ASC
