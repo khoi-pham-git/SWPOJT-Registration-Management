@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[Company](
 	[companyEmail] [varchar](100) not NULL unique,
 
 	[description] [nvarchar](300) not NULL,
-	[studentQuantity] [int] not NULL,
+
 	[accountID] int NOT NULL,
  CONSTRAINT [PK_Company] PRIMARY KEY CLUSTERED 
 (
@@ -135,6 +135,7 @@ CREATE TABLE [dbo].[job](
 	[jobDescription] [nvarchar](300) not NULL,
  [openDate] [date] not null,
  [closeDate] [date] not null,
+ 	[studentQuantity] [int] not NULL,
  CONSTRAINT [PK_JOB] PRIMARY KEY CLUSTERED 
 (
 	[jobID] ASC
