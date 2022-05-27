@@ -136,6 +136,7 @@ CREATE TABLE [dbo].[job](
  [openDate] [date] not null,
  [closeDate] [date] not null,
  	[studentQuantity] [int] not NULL,
+	[status] int not null,
  CONSTRAINT [PK_JOB] PRIMARY KEY CLUSTERED 
 (
 	[jobID] ASC
@@ -169,6 +170,7 @@ CREATE TABLE [dbo].[Registration](
 	[mark] [float] NULL,
 	[description] [nvarchar](300) NULL,
 	[processNote] [nvarchar](300) NULL,
+	[status] int not null,
  CONSTRAINT [PK_Registration] PRIMARY KEY CLUSTERED 
 (
 	[registrationID] ASC
