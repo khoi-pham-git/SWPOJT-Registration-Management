@@ -4,6 +4,9 @@ Drop Database OJTManagement
 /****** Object:  Database [OJTManagement]    Script Date: 5/23/2022 7:56:55 PM ******/
 CREATE DATABASE [OJTManagement]
 GO
+Use [OJTManagement]
+GO
+
 ALTER DATABASE [OJTManagement] SET COMPATIBILITY_LEVEL = 130
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
@@ -109,7 +112,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Company](
 	[companyID] [varchar](10) NOT NULL,
-	[companyName] [nvarchar](200) not NULL,
+	[companyName] [nvarchar](100) not NULL,
 	[phoneNumber] [varchar](10) not NULL,
 	[companyEmail] [varchar](100) not NULL unique,
 
@@ -189,7 +192,7 @@ CREATE TABLE [dbo].[Student](
 	[address] [nvarchar](200) not NULL,
 	[phoneNumber] [varchar](10) not NULL,
 	[major] [varchar](50) not NULL,
-	[studentMail] [varchar](100) not NULL,
+	[studentEmail] [varchar](100) not NULL,
 	[accountID] int not NULL,
 
 	[CV] [nvarchar](100) NULL,
