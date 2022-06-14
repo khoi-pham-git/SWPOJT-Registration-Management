@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OJTManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_Company_Account" FromRole="Account" ToRole="Company" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Account" FromRole="Account" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Company_Account" FromRole="Company" ToRole="Account" />
+    <NavigationProperty Name="Histories" Relationship="Self.FK__History__Company__3B75D760" FromRole="Company" ToRole="History" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK_JOB_Company" FromRole="Company" ToRole="Job" />
+    <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_Company1" FromRole="Company" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="Evaluation">
+    <Key>
+      <PropertyRef Name="EvaluationID" />
+    </Key>
+    <Property Name="EvaluationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grade" Type="Double" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pass" Type="Int32" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Registrations" Relationship="Self.FK__Registrat__Evalu__32E0915F" FromRole="Evaluation" ToRole="Registration" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="TermID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK__History__Company__3B75D760" FromRole="History" ToRole="Company" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__History__Student__3A81B327" FromRole="History" ToRole="Student" />
+    <NavigationProperty Name="Term" Relationship="Self.FK__History__TermID__3C69FB99" FromRole="History" ToRole="Term" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MajorID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="JobDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OpenDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CloseDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentQuantity" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_JOB_Company" FromRole="Job" ToRole="Company" />
+    <NavigationProperty Name="Major" Relationship="Self.FK_JOB_Major1" FromRole="Job" ToRole="Major" />
+  </EntityType>
+  <EntityType Name="Major">
+    <Key>
+      <PropertyRef Name="MajorID" />
+    </Key>
+    <Property Name="MajorID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MajorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK_JOB_Major1" FromRole="Major" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="Registration">
+    <Key>
+      <PropertyRef Name="RegistrationID" />
+    </Key>
+    <Property Name="RegistrationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ProcessNote" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="EvaluationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Registration_Company1" FromRole="Registration" ToRole="Company" />
+    <NavigationProperty Name="Evaluation" Relationship="Self.FK__Registrat__Evalu__32E0915F" FromRole="Registration" ToRole="Evaluation" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_Registration_Student" FromRole="Registration" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Major" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="TermID" Type="Int32" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Student_Account" FromRole="Student" ToRole="Account" />
+    <NavigationProperty Name="Histories" Relationship="Self.FK__History__Student__3A81B327" FromRole="Student" ToRole="History" />
+    <NavigationProperty Name="Registrations" Relationship="Self.FK_Registration_Student" FromRole="Student" ToRole="Registration" />
+    <NavigationProperty Name="Term" Relationship="Self.FK_Student_Term" FromRole="Student" ToRole="Term" />
+  </EntityType>
+  <EntityType Name="Term">
+    <Key>
+      <PropertyRef Name="TermID" />
+    </Key>
+    <Property Name="TermID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TermName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Histories" Relationship="Self.FK__History__TermID__3C69FB99" FromRole="Term" ToRole="History" />
+    <NavigationProperty Name="Students" Relationship="Self.FK_Student_Term" FromRole="Term" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_Company_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__History__Company__3B75D760">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JOB_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registration_Company1">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Registrat__Evalu__32E0915F">
+    <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evaluation">
+        <PropertyRef Name="EvaluationID" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="EvaluationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__History__Student__3A81B327">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__History__TermID__3C69FB99">
+    <End Role="Term" Type="Self.Term" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Term">
+        <PropertyRef Name="TermID" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="TermID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JOB_Major1">
+    <End Role="Major" Type="Self.Major" Multiplicity="1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Major">
+        <PropertyRef Name="MajorID" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registration_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Registration">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Term">
+    <End Role="Term" Type="Self.Term" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Term">
+        <PropertyRef Name="TermID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="TermID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OJTManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Evaluations" EntityType="Self.Evaluation" />
+    <EntitySet Name="Histories" EntityType="Self.History" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="Majors" EntityType="Self.Major" />
+    <EntitySet Name="Registrations" EntityType="Self.Registration" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Terms" EntityType="Self.Term" />
+    <AssociationSet Name="FK_Company_Account" Association="Self.FK_Company_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Account" Association="Self.FK_Student_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__History__Company__3B75D760" Association="Self.FK__History__Company__3B75D760">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="History" EntitySet="Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JOB_Company" Association="Self.FK_JOB_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registration_Company1" Association="Self.FK_Registration_Company1">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Registration" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Registrat__Evalu__32E0915F" Association="Self.FK__Registrat__Evalu__32E0915F">
+      <End Role="Evaluation" EntitySet="Evaluations" />
+      <End Role="Registration" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__History__Student__3A81B327" Association="Self.FK__History__Student__3A81B327">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="History" EntitySet="Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__History__TermID__3C69FB99" Association="Self.FK__History__TermID__3C69FB99">
+      <End Role="Term" EntitySet="Terms" />
+      <End Role="History" EntitySet="Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JOB_Major1" Association="Self.FK_JOB_Major1">
+      <End Role="Major" EntitySet="Majors" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registration_Student" Association="Self.FK_Registration_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Registration" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Term" Association="Self.FK_Student_Term">
+      <End Role="Term" EntitySet="Terms" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
