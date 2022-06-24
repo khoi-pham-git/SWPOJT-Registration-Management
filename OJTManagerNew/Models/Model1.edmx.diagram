@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7bca317c745d4258ab1bcee4d3f2a5cd" Name="Diagram1">
+        <EntityTypeShape EntityType="OJTManagementModel.Account" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Company" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.CompanyInTerm" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Evaluation" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Job" Width="1.5" PointX="4" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Major" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Permission" Width="1.5" PointX="4.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Registration" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Role" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.RolePermission" Width="1.5" PointX="6.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Student" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OJTManagementModel.Term" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="OJTManagementModel.FK_Account_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_Company_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_Student_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK__CompanyIn__Compa__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_JOB_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_Registration_Company1" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK__CompanyIn__TermI__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK__Registrat__Evalu__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_JOB_Major1" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK__Student__MajorID__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_RolePermission_Permission" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK__Registrat__TermI__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_Registration_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_RolePermission_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="OJTManagementModel.FK_Student_Term" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

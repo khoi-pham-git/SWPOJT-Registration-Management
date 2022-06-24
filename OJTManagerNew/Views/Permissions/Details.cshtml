@@ -1,0 +1,26 @@
+﻿@model OJTManagerNew.Models.Permission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Permission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PermissionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermissionDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PermissionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
