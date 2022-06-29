@@ -17,23 +17,7 @@ namespace OJTManagerNew.Controllers.API
         private OJTManagementEntities db = new OJTManagementEntities();
 
         // GET: api/Jobs
-        public IQueryable<Job> GetJobs()
-        {
-            return db.Jobs;
-        }
 
-        // GET: api/Jobs/5
-        [ResponseType(typeof(Job))]
-        public IHttpActionResult GetJob(int id)
-        {
-            Job job = db.Jobs.Find(id);
-            if (job == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(job);
-        }
         [ResponseType(typeof(Job))]
         public IHttpActionResult GetJobByName(String name)
         {
@@ -111,14 +95,7 @@ namespace OJTManagerNew.Controllers.API
             return Ok(job);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
 
         private bool JobExists(int id)
         {

@@ -101,6 +101,79 @@ namespace OJTManagerNew.Controllers.API
             return Ok(account);
         }
 
+        [HttpGet]
+        [Route("login/{email}/{pass}")]
+        [ResponseType(typeof(Account))]
+        public IHttpActionResult Login(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+        public IHttpActionResult Login0(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+        public IHttpActionResult Login1(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+        public IHttpActionResult Login2(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+        public IHttpActionResult Login3(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+        public IHttpActionResult Login4(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
+        public IHttpActionResult Login5(string email, string pass)
+        {
+            var account = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(pass));
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(account);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
